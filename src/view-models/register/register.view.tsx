@@ -12,16 +12,17 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
   return (
     <View className="flex-1 justify-center px-4">
       <Input
+        error="E-mail inválido"
         label="E-mail"
         leftIcon="mail-outline"
         onChangeText={setEmail}
         value={email}
-        error="E-mail inválido"
       />
       <Input
         label="Password"
         leftIcon="lock-closed-outline"
         onChangeText={setPassword}
+        secureTextEntry
         value={password}
       />
       <TouchableOpacity

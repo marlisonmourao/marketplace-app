@@ -44,6 +44,8 @@ export function Input({
     handleTextChange,
     handleWrapperPress,
     getIconColor,
+    showPassword,
+    handlePasswordToggle,
   } = useInputViewModel({
     secureTextEntry,
     onBlur,
@@ -75,23 +77,27 @@ export function Input({
           onBlur={handleBlur}
           onChangeText={handleTextChange}
           onFocus={handleFocus}
+          secureTextEntry={showPassword}
           value={value}
           {...props}
         />
 
-        <TouchableOpacity>
-          <Ionicons name="eye-off-outline" size={22} />
-        </TouchableOpacity>
+        {secureTextEntry && (
+          <TouchableOpacity activeOpacity={0.7} onPress={handlePasswordToggle}>
+            <Ionicons
+              name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+              size={22}
+            />
+          </TouchableOpacity>
+        )}
       </Pressable>
 
-      {
-        error && (
-          <Text className={styles.error()}>
-            <Ionicons name="alert-circle-outline" size={14} className="mr-4" />
-            {error}
-          </Text>
-        )
-      }
+      {error && (
+        <Text className={styles.error()}>
+          <Ionicons className="mr-4" name="alert-circle-outline" size={14} />
+          {error}
+        </Text>
+      )}
     </View>
   )
 }
