@@ -15,11 +15,11 @@ export function useRegisterViewModel() {
   } = useForm<RegisterSchemaType>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      name: 'Marlison Mourão',
-      email: 'marlison3@email.com',
-      phone: '932939299294',
-      password: '12345678',
-      confirmPassword: '12345678',
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
     },
   })
 
