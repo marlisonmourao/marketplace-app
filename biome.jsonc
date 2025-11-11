@@ -1,0 +1,33 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "extends": [
+    "ultracite"
+  ],
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noShadow": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      },
+      "performance": {
+        "noNamespaceImport": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "lineEnding": "lf",
+      "semicolons": "asNeeded",
+      "quoteStyle": "single"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  }
+}
