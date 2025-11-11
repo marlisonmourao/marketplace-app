@@ -50,7 +50,6 @@ export function Input({
     secureTextEntry,
     onBlur,
     onFocus,
-    error,
     value,
     isError: !!error,
     isDisabled,
@@ -59,6 +58,8 @@ export function Input({
 
   const styles = inputVariants({
     isFocused,
+    isDisabled,
+    isError: !!error,
   })
   return (
     <View className={styles.container({ className: containerClassName })}>

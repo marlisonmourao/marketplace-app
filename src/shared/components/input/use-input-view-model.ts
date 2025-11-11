@@ -5,7 +5,6 @@ import type { FocusEvent, TextInput } from 'react-native'
 type InputViewModelProps = {
   isError: boolean
   isDisabled?: boolean
-  error?: string
   secureTextEntry?: boolean
   onFocus?: (event: FocusEvent) => void
   onBlur?: (event: FocusEvent) => void
@@ -15,7 +14,6 @@ type InputViewModelProps = {
 }
 
 export function useInputViewModel({
-  error,
   isDisabled,
   isError,
   mask,
@@ -74,5 +72,6 @@ export function useInputViewModel({
     showPassword,
     handleTextChange,
     isFocused,
+    isDisabled,
   }
 }
