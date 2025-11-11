@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('./src/styles/colors')
+import { colors as appColors } from './src/styles/colors'
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
-      colors,
+      colors: appColors,
       fontSize: {
         sm: '14px',
         base: '16px',

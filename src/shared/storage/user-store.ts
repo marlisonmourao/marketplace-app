@@ -3,18 +3,18 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import type { UserInterface } from '../interfaces/user'
 
-interface SetSessionParams {
+type SetSessionParams = {
   user: UserInterface | null
   token: string | null
   refreshToken: string | null
 }
 
-interface UpdateTokensParams {
+type UpdateTokensParams = {
   token: string | null
   refreshToken: string | null
 }
 
-export interface UserStore {
+export type UserStore = {
   user: UserInterface | null
   token: string | null
   refreshToken: string | null
@@ -24,20 +24,25 @@ export interface UserStore {
   updateTokens: (params: UpdateTokensParams) => void
 }
 
-export const useUserStore = create(persist<UserStore>((set) => ({
-  user: null,
-  token: null,
-  refreshToken: null,
+export const useUserStore = create(
+  persist<UserStore>(
+    (set) => ({
+      user: null,
+      token: null,
+      refreshToken: null,
 
-  logout: () => set({
-    user: null,
-    token: null,
-    refreshToken: null,
-  }),
-  setSession: (sessionData) => set({ ...sessionData }),
-  updateTokens: (params) => set({ ...params }),
-}), {
-  name: 'marketplace:auth',
-  storage: createJSONStorage(() => AsyncStorage),
-}))
-
+      logout: () =>
+        set({
+          user: null,
+          token: null,
+          refreshToken: null,
+        }),
+      setSession: (sessionData) => set({ ...sessionData }),
+      updateTokens: (params) => set({ ...params }),
+    }),
+    {
+      name: 'marketplace:auth',
+      storage: createJSONStorage(() => AsyncStorage),
+    }
+  )
+)

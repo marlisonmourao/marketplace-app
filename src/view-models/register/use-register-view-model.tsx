@@ -26,13 +26,13 @@ export function useRegisterViewModel() {
   const onSubmit = handleSubmit(async (formData) => {
     const { confirmPassword, ...userData } = formData
 
-   const mutationResponse = await useRegister.mutateAsync(userData)
+    const mutationResponse = await useRegister.mutateAsync(userData)
 
-   setSession({
-    refreshToken: mutationResponse.refreshToken,
-    token: mutationResponse.token,
-    user: mutationResponse.user,
-   })
+    setSession({
+      refreshToken: mutationResponse.refreshToken,
+      token: mutationResponse.token,
+      user: mutationResponse.user,
+    })
   })
 
   return {
