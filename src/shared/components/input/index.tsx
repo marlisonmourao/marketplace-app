@@ -33,7 +33,6 @@ export function Input({
   onFocus,
   className,
   isDisabled,
-  onChangeText,
   value,
   error,
   ...props
@@ -42,10 +41,9 @@ export function Input({
     isFocused,
     handleBlur,
     handleFocus,
-    handlePasswordToggle,
+    handleTextChange,
     handleWrapperPress,
     getIconColor,
-    showPassword,
   } = useInputViewModel({
     secureTextEntry,
     onBlur,
@@ -53,7 +51,6 @@ export function Input({
     error,
     value,
     isError: !!error,
-    onChangeText,
     isDisabled,
     mask,
   })
@@ -64,14 +61,21 @@ export function Input({
   return (
     <View className={styles.container({ className: containerClassName })}>
       <Text className={styles.label()}>{label}</Text>
-      <Pressable className={styles.wrapper()}>
-        <Ionicons name="person" size={22} className='mr-3' />
-
+      <Pressable className={styles.wrapper()} onPress={handleWrapperPress}>
+        {leftIcon && (
+          <Ionicons
+            className="mr-3"
+            color={getIconColor()}
+            name={leftIcon}
+            size={22}
+          />
+        )}
         <TextInput
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          onChangeText={onChangeText}
           className={styles.input({ className })}
+          onBlur={handleBlur}
+          onChangeText={handleTextChange}
+          onFocus={handleFocus}
+          value={value}
           {...props}
         />
 
@@ -79,6 +83,15 @@ export function Input({
           <Ionicons name="eye-off-outline" size={22} />
         </TouchableOpacity>
       </Pressable>
+
+      {
+        error && (
+          <Text className={styles.error()}>
+            <Ionicons name="alert-circle-outline" size={14} className="mr-4" />
+            {error}
+          </Text>
+        )
+      }
     </View>
   )
 }

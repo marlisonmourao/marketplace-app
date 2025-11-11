@@ -2,11 +2,11 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const inputVariants = tv({
   slots: {
-    container: 'w-full my-4',
-    wrapper: 'flex-row items-center border-b border-gray-200 pb-2',
-    input: 'bg-transparent text-gray-500 text-base flex-1',
-    label: 'text-xs text-gray-300 mb-3 font-semibold',
-    error: 'text-sm text-danger mt-1',
+    container: 'my-4 w-full',
+    wrapper: 'flex-row items-center border-gray-200 border-b pb-2',
+    input: 'flex-1 bg-transparent text-base text-gray-500',
+    label: 'mb-3 font-semibold text-gray-300 text-xs',
+    error: 'mt-1 text-danger text-sm',
   },
   variants: {
     isFocused: {
