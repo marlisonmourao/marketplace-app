@@ -1,4 +1,3 @@
-import type { UserInterface } from '../user'
 
 export type RegisterHttpParams = {
   name: string
@@ -6,10 +5,4 @@ export type RegisterHttpParams = {
   avatarUrl?: string
   phone: string
   password: string
-}
-
-export type RegisterHttpResponse = {
-  user: UserInterface
-  token: string
-  refreshToken: string
 }

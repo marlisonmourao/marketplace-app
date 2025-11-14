@@ -27,13 +27,13 @@ export function InputController<T extends FieldValues>({
       render={({
         field: { onChange, onBlur, value },
         fieldState: { error },
-        formState: { isSubmitting }
+        formState: { isSubmitting },
       }) => (
         <Input
           error={error?.message}
+          isDisabled={isSubmitting || props.isDisabled}
           onBlur={onBlur}
           onChangeText={onChange}
-          isDisabled={isSubmitting || props.isDisabled}
           value={value}
           {...props}
         />
