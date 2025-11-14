@@ -1,9 +1,6 @@
 import { tv, type VariantProps } from 'tailwind-variants'
 
-export enum ButtonVariantsEnum {
-  FILLED = 'field',
-  OUTLINE = 'outline',
-}
+type ButtonVariant = 'field' | 'outline'
 
 export const buttonVariants = tv({
   slots: {
@@ -42,7 +39,7 @@ export const buttonVariants = tv({
     hasIcon: false,
     isLoading: false,
     isDisabled: false,
-    variant: ButtonVariantsEnum.FILLED,
+    variant: 'field' as ButtonVariant,
   },
 })
 

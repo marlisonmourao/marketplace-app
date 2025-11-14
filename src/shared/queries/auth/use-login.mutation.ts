@@ -11,9 +11,6 @@ export const useLoginMutation = () => {
     onSuccess: (response) => {
       setSession(response)
     },
-    onError: (error) => {
-      console.log(error)
-    },
   })
 
   return mutation

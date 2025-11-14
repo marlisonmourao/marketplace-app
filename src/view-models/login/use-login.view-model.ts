@@ -1,12 +1,9 @@
 import { useLoginMutation } from '@/shared/queries/auth/use-login.mutation'
-import { useUserStore } from '@/shared/storage/user-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { loginSchema, type LoginSchemaType } from './login-schema'
 
 export function useLoginViewModel() {
-  const { user } = useUserStore()
-
   const {
     control,
     handleSubmit,

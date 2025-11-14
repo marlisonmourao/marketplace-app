@@ -3,8 +3,7 @@ import axios, { type AxiosInstance } from 'axios'
 const baseURL = 'http://192.168.0.10:3001'
 
 export class MarketPlaceApiClient {
-  private instance: AxiosInstance
-  private isRefreshing = false
+  private readonly instance: AxiosInstance
 
   constructor() {
     this.instance = axios.create({

@@ -5,12 +5,6 @@ import { useMutation } from '@tanstack/react-query'
 export const useRegisterMutation = () => {
   const mutation = useMutation({
     mutationFn: (userData: RegisterHttpParams) => register(userData),
-    onSuccess: (response) => {
-      console.log(response)
-    },
-    onError: (error) => {
-      console.log(error)
-    },
   })
 
   return mutation

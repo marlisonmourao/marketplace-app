@@ -8,7 +8,7 @@ type InputViewModelProps = {
   secureTextEntry?: boolean
   onFocus?: (event: FocusEvent) => void
   onBlur?: (event: FocusEvent) => void
-  mask?: (value: string) => string | void
+  mask?: (value: string) => string | undefined
   onChangeText?: (text: string) => void
   value?: string
 }
@@ -47,9 +47,15 @@ export function useInputViewModel({
   }
 
   function getIconColor() {
-    if (isError) return colors.danger
-    if (isFocused) return colors['purple-base']
-    if (value) return colors['purple-base']
+    if (isError) {
+      return colors.danger
+    }
+    if (isFocused) {
+      return colors['purple-base']
+    }
+    if (value) {
+      return colors['purple-base']
+    }
 
     return colors.gray[200]
   }

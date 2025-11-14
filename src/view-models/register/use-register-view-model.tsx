@@ -24,7 +24,8 @@ export function useRegisterViewModel() {
   })
 
   const onSubmit = handleSubmit(async (formData) => {
-    const { confirmPassword, ...userData } = formData
+    const { name, email, phone, password } = formData
+    const userData = { name, email, phone, password }
 
     const mutationResponse = await useRegister.mutateAsync(userData)
 

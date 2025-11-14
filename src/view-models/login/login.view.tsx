@@ -39,7 +39,7 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
           secureTextEntry
         />
 
-        <Button className="mt-6" rightIcon="arrow-forward">
+        <Button className="mt-6" onPress={onSubmit} rightIcon="arrow-forward">
           Entrar
         </Button>
       </View>

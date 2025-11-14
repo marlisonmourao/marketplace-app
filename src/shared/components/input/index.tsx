@@ -17,7 +17,7 @@ export type InputProps = TextInputProps &
     leftIcon?: keyof typeof Ionicons.glyphMap
     rightIcon?: keyof typeof Ionicons.glyphMap
     containerClassName?: string
-    mask?: (value: string) => string | void
+    mask?: (value: string) => string | undefined
     error?: string
   }
 
