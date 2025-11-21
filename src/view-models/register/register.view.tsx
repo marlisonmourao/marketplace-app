@@ -4,13 +4,15 @@ import { InputController } from '@/shared/components/input-controller'
 import { KeyboardContainer } from '@/shared/components/keyboard-container'
 import { router } from 'expo-router'
 import type { FC } from 'react'
-import { ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import type { useRegisterViewModel } from './use-register-view-model'
+import { Ionicons } from '@expo/vector-icons'
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
   onSubmit,
   control,
   errors,
+  handleSelectAvatar,
 }) => (
   <KeyboardContainer>
     <ScrollView className="flex-1 px-[40px]">
@@ -18,6 +20,10 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
         subtitle="Informe seus dados pessoais de acesso"
         title="Crie sua conta"
       />
+
+      <TouchableOpacity onPress={handleSelectAvatar}>
+        <Ionicons name="cloud-upload-outline" size={32} />
+      </TouchableOpacity>
 
       <InputController
         control={control}
