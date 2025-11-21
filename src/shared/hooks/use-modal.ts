@@ -8,7 +8,7 @@ import {
 
 export type SelectionVariant = 'primary' | 'secondary' | 'danger'
 
-export interface SelectionOptions {
+export type SelectionOptions = {
   text: string
   onPress: () => void
   icon?: keyof typeof Ionicons.glyphMap
@@ -16,7 +16,7 @@ export interface SelectionOptions {
 }
 
 export const useModal = () => {
-  const { open, close } = useModalStore()
+  const { open } = useModalStore()
 
   const showSelection = ({
     title,

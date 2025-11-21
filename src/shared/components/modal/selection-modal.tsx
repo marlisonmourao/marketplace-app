@@ -8,7 +8,7 @@ import clsx from 'clsx'
 import type { FC } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-export interface SelectionModalProps {
+export type SelectionModalProps = {
   title: string
   message?: string
   options: SelectionOptions[]

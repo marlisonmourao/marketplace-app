@@ -4,11 +4,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { registerSchema, type RegisterSchemaType } from './register-schema'
 import { useModal } from '@/shared/hooks/use-modal'
+import { useCamera } from '@/shared/hooks/use-camera'
 
 export function useRegisterViewModel() {
   const useRegister = useRegisterMutation()
   const { setSession } = useUserStore()
   const modals = useModal()
+  const { openCamera } = useCamera({})
 
   function handleSelectAvatar() {
     modals.showSelection({
@@ -19,14 +21,14 @@ export function useRegisterViewModel() {
           text: 'Câmera',
           icon: 'camera',
           variant: 'primary',
-          onPress: () => console.log('Câmera'),
+          onPress: () => openCamera(),
         },
         {
           text: 'Galeria',
           icon: 'images-outline',
           variant: 'primary',
           onPress: () => console.log('Galeria'),
-        }
+        },
       ],
     })
   }
