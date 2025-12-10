@@ -2,19 +2,7 @@ import { useCallback, useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import { Toast } from 'toastify-react-native'
 
-type UseCameraOptions = {
-  aspect?: [number, number]
-  quality?: number
-  allowsEditing?: boolean
-  exif?: boolean
-}
-
-export const useCamera = ({
-  aspect,
-  quality,
-  allowsEditing,
-  exif,
-}: UseCameraOptions) => {
+export const useCamera = (pickerOptions: ImagePicker.ImagePickerOptions) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const requestCameraPermission = useCallback(async () => {
@@ -43,10 +31,7 @@ export const useCamera = ({
       }
 
       const result = await ImagePicker.launchCameraAsync({
-        aspect,
-        quality,
-        allowsEditing,
-        exif,
+        ...pickerOptions,
       })
 
       if (!result.canceled && result.assets && result.assets.length > 0) {

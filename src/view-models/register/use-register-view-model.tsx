@@ -3,34 +3,15 @@ import { useUserStore } from '@/shared/storage/user-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { registerSchema, type RegisterSchemaType } from './register-schema'
-import { useModal } from '@/shared/hooks/use-modal'
-import { useCamera } from '@/shared/hooks/use-camera'
+import { useImage } from '@/shared/hooks/use-image'
 
 export function useRegisterViewModel() {
   const useRegister = useRegisterMutation()
   const { setSession } = useUserStore()
-  const modals = useModal()
-  const { openCamera } = useCamera({})
+  const { handleSelectImage } = useImage({})
 
-  function handleSelectAvatar() {
-    modals.showSelection({
-      title: 'Selecionar foto',
-      message: 'Escolha uma opção',
-      options: [
-        {
-          text: 'Câmera',
-          icon: 'camera',
-          variant: 'primary',
-          onPress: () => openCamera(),
-        },
-        {
-          text: 'Galeria',
-          icon: 'images-outline',
-          variant: 'primary',
-          onPress: () => console.log('Galeria'),
-        },
-      ],
-    })
+  async function handleSelectAvatar() {
+    await handleSelectImage()
   }
 
   const {
