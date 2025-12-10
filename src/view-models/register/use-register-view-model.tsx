@@ -4,11 +4,18 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { registerSchema, type RegisterSchemaType } from './register-schema'
 import { useImage } from '@/shared/hooks/use-image'
+import { useState } from 'react'
+import { CameraType } from 'expo-image-picker'
 
 export function useRegisterViewModel() {
   const useRegister = useRegisterMutation()
   const { setSession } = useUserStore()
-  const { handleSelectImage } = useImage({})
+  const [avatarUri, setAvatarUri] = useState<string | null | undefined>(null)
+
+  const { handleSelectImage } = useImage({
+    callback: setAvatarUri,
+    cameraType: CameraType.front,
+  })
 
   async function handleSelectAvatar() {
     await handleSelectImage()
@@ -47,5 +54,6 @@ export function useRegisterViewModel() {
     errors,
     onSubmit,
     handleSelectAvatar,
+    avatarUri,
   }
 }
